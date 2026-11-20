@@ -234,3 +234,5 @@ The unit tests cover duplicate-key handling, feature-table deduplication, backwa
 ## Suggested portfolio description
 
 **Northstar FP&A — Financial Planning & Scenario Modelling** is an end-to-end planning workspace built on a 421k-row weekly retail sales panel. It combines Pandas data preparation, time-aware machine-learning forecasts, recursive backtesting, transparent reference-plan construction and editable financial scenarios in a React/Vite dashboard, with a guided Jupyter notebook for reproducibility.
+#   F i n a n c i a l - P l a n n i n g - a n d - S c e n a r i o - m o d e l l i n g  
+ 
