@@ -1,108 +1,104 @@
-# Northstar FP&A — Financial Planning & Scenario Modelling
+# Northstar FP&A
 
-An end-to-end financial planning portfolio project using the **Walmart Recruiting – Store Sales Forecasting** dataset. It combines a reproducible Python/Pandas forecasting pipeline, time-aware machine learning, a guided Jupyter notebook and a React + Vite planning dashboard.
+## Financial Planning and Scenario Modelling
 
-**Python · Pandas · Scikit-learn · HistGradientBoosting · Time-series Backtesting · Scenario Modelling · React · Vite · Recharts · Vercel**
+Northstar FP&A is an independent financial planning and analysis project built around historical weekly retail sales data. It combines a reproducible Python analysis pipeline, time-aware machine-learning forecasts, a guided Jupyter notebook, and an interactive React dashboard.
 
-> Independent portfolio project using historical competition data. It is not affiliated with, commissioned by, or an official financial planning tool for Walmart.
+The project demonstrates how historical business data can be transformed into a planning view that helps decision-makers understand performance, compare business units, assess forecast uncertainty, and test alternative assumptions.
 
-## Project at a glance
+## What the project does
 
-The original Microsoft Financial Sample workbook was too small for a substantial forecasting exercise. This project uses a much larger panel of weekly sales observations across 45 stores and many departments. The commonly distributed original competition training file contains approximately 421,570 store-department-week observations; the exact row count is printed by the pipeline after download.
+- Analyses historical weekly sales across stores and departments.
+- Compares performance across store formats and business units.
+- Examines weekly patterns, seasonal effects, holidays, markdowns, and selected economic indicators.
+- Builds lagged and rolling features from historical observations.
+- Trains and evaluates a machine-learning forecasting model using time-aware backtesting.
+- Produces recursive forecasts for the supplied future store, department, and week combinations.
+- Compares forecasts with an explicitly illustrative reference plan.
+- Supports conservative, base, and upside planning scenarios through editable assumptions.
+- Presents the analysis in an interactive financial planning dashboard.
 
-The application answers:
+## Dataset
 
-- What does the historical weekly sales trajectory look like?
-- How do store formats contribute to the network's sales?
-- How do holiday weeks and regional drivers relate to sales?
-- What does a recursive, time-aware weekly sales forecast look like?
-- How do transparent demand, price/mix and cost assumptions change the planning outcome?
+The project uses the Store Sales Forecasting competition dataset available through Kaggle:
 
-## Why this dataset
+[Store Sales Forecasting dataset](https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/data)
 
-The Walmart Recruiting competition dataset provides:
+The commonly distributed training file contains approximately 421,570 weekly store-department observations across 45 stores. The exact number of records is reported by the analysis pipeline after the source files are downloaded.
 
-- `train.csv`: historical weekly sales by store and department.
-- `test.csv`: future store / department / week combinations with the sales target withheld.
-- `features.csv`: store-week context including temperature, fuel price, markdowns, CPI, unemployment and holiday flags.
-- `stores.csv`: store format and store size.
+The source package contains four files:
 
-This creates a more meaningful forecasting panel than a small, pre-aggregated financial sample. It includes multiple stores, departments, weekly seasonality, holiday indicators, promotional markdown fields and regional economic variables.
+- `train.csv` - historical weekly sales by store and department.
+- `test.csv` - future store, department, and week combinations for forecasting.
+- `features.csv` - store-week context, including holiday flags, markdowns, temperature, fuel price, CPI, and unemployment where available.
+- `stores.csv` - store format and store size.
 
-**Dataset source:** [Walmart Recruiting – Store Sales Forecasting (Kaggle)](https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/data)
+The raw competition files are not included in this repository. Download them from the Kaggle competition page after reviewing and accepting the applicable competition rules. See [DATA_SOURCE.md](DATA_SOURCE.md) for the expected files and data notes.
 
-Access and use are subject to the Kaggle competition rules. The raw competition files are not bundled with this ZIP. Review the current competition rules before redistributing raw data or derived data publicly. See [DATA_SOURCE.md](DATA_SOURCE.md).
+## Analysis approach
 
-## Important financial interpretation
+### Data preparation
 
-This dataset contains `Weekly_Sales`, not an approved corporate budget or a complete finance ledger. It does **not** contain actual COGS, payroll, operating expenses, EBITDA, working capital or cash-flow statements.
+The Python pipeline validates the required source files, parses dates and numeric fields, checks duplicate store-department-week keys, and prepares store-week features before joining them to the sales data. Missing markdown values and regional fields are handled using documented rules. The pipeline records data-quality information for review.
 
-To make this a useful FP&A exercise without inventing historical financials:
+### Forecasting
 
-1. Weekly sales are treated as the observed revenue measure.
-2. A clearly labelled **illustrative reference plan** is calculated as the historical same-ISO-week average for each store / department, with a 2% planning uplift. It is not a management-approved budget.
-3. The statistical model predicts weekly sales using only past sales and known week / store features.
-4. Demand growth, price/mix, contribution margin and operating expense rates are explicit, editable planning assumptions.
-5. “Modelled operating contribution” is calculated from forecast revenue and assumed rates. It is **not** reported profit, EBITDA or cash flow.
-6. The forecast range is an indicative P90 error envelope from a recursive holdout backtest, not a calibrated probabilistic confidence interval.
+The project builds backward-looking lag and rolling features, then trains a `HistGradientBoostingRegressor`. Evaluation uses a time-based holdout and recursive prediction so that future target values are not used to construct lag features during the backtest. The model forecasts the future combinations supplied in the competition test file.
 
-These boundaries are part of the analytical story and should be explained in an interview.
+Forecast quality is reported using metrics such as WMAE, WMAPE, and RMSE where supported by the evaluation data. These metrics describe model performance on the selected historical holdout; they do not guarantee future accuracy.
 
-## Repository structure
+### Planning scenarios
+
+The dataset provides weekly sales, not a complete corporate financial plan. The project therefore separates observed sales from planning assumptions.
+
+The dashboard supports:
+
+- A base scenario.
+- An upside scenario.
+- A conservative scenario.
+- Editable demand, price or mix, contribution, and operating-cost assumptions.
+
+Any reference plan, contribution estimate, or cost-related output derived from these assumptions is illustrative. It must not be interpreted as an approved budget, reported profit, EBITDA, or cash-flow statement.
+
+## Project structure
 
 ```text
-walmart-financial-planning/
-├── data/
-│   └── raw/                         # Place train/test/features/stores CSVs here
-├── notebooks/
-│   └── 01_walmart_financial_planning_scenario_modelling.ipynb
-├── src/
-│   └── financial_planning.py        # Cleaning, features, backtest, forecast, scenario logic
-├── tests/
-│   └── test_financial_planning.py
-├── outputs/                         # Local outputs (not required by frontend)
-├── frontend/
-│   ├── public/data/
-│   │   └── financial_plan.json     # Generated data consumed by Vite
-│   ├── src/
-│   ├── package.json
-│   └── vite.config.js
-├── run_analysis.py
-├── run_windows.bat
-├── requirements.txt
-├── ANALYSIS_METHODOLOGY.md
-├── DATA_SOURCE.md
-├── PORTFOLIO_CASE_STUDY.md
-├── JUPYTER_GUIDE.md
-└── START_HERE.md
+northstar-fpa/
+|-- data/
+|   `-- raw/                         # Place downloaded source CSV files here
+|-- notebooks/
+|   `-- 01_walmart_financial_planning_scenario_modelling.ipynb
+|-- src/
+|   `-- financial_planning.py        # Cleaning, features, backtesting, forecasts, scenarios
+|-- tests/
+|   `-- test_financial_planning.py
+|-- outputs/                         # Local generated analysis artefacts
+|-- frontend/
+|   |-- public/data/
+|   |   `-- financial_plan.json      # Aggregated dashboard data generated by Python
+|   `-- src/                         # React dashboard source
+|-- run_analysis.py
+|-- requirements.txt
+|-- ANALYSIS_METHODOLOGY.md
+|-- DATA_SOURCE.md
+|-- JUPYTER_GUIDE.md
+`-- PORTFOLIO_CASE_STUDY.md
 ```
 
-## Get the data
+## Run the analysis locally
 
-1. Sign in to Kaggle and open the [competition data page](https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/data).
-2. Accept the competition rules if Kaggle requires it.
-3. Download the competition data and extract the CSVs.
-4. Copy these four files into `data/raw/`:
-   - `train.csv`
-   - `test.csv`
-   - `features.csv`
-   - `stores.csv`
+### 1. Download the data
 
-The pipeline does not require `sampleSubmission.csv`.
+Download the four required CSV files from the [Kaggle competition data page](https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/data) and place them in `data/raw/`:
 
-## Run locally
+```text
+data/raw/train.csv
+data/raw/test.csv
+data/raw/features.csv
+data/raw/stores.csv
+```
 
-### Quick start (Windows)
-
-Double-click **`run_windows.bat`**. It creates the virtual environment, installs both Python and
-frontend dependencies, regenerates the dashboard data and starts the dashboard at
-`http://localhost:5173`. Keep the window open while using the app.
-
-If you only need to restart the dashboard later, double-click **`start_frontend.bat`**.
-
-### Manual setup
-
-#### 1. Create a Python environment
+### 2. Create a Python environment
 
 Windows PowerShell:
 
@@ -113,7 +109,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-macOS/Linux:
+macOS or Linux:
 
 ```bash
 python3 -m venv .venv
@@ -122,47 +118,32 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-#### 2. Run the analysis and forecasting pipeline
+### 3. Run the analysis pipeline
 
-From the repository root:
+From the project root:
 
 ```bash
 python run_analysis.py
 ```
 
-The pipeline:
-
-- validates the four source files;
-- parses dates and numeric fields;
-- removes duplicate store / department / week keys;
-- collapses duplicate store-week feature rows before joins;
-- fills sparse markdown values with zero and imputes regional fields transparently;
-- creates backward-looking lag and rolling features;
-- trains and time-backtests a HistGradientBoostingRegressor;
-- forecasts the competition test schedule recursively;
-- calculates the illustrative same-week reference plan;
-- writes the aggregate JSON consumed by the dashboard.
-
-Generated dashboard data:
+The pipeline generates the aggregated dashboard data at:
 
 ```text
 frontend/public/data/financial_plan.json
 ```
 
-#### 3. Explore the Jupyter notebook
+### 4. Explore the Jupyter notebook
+
+Install JupyterLab and launch it from the project root:
 
 ```bash
 python -m pip install jupyterlab
 jupyter lab
 ```
 
-Open:
+Open `notebooks/01_walmart_financial_planning_scenario_modelling.ipynb` and run the cells from top to bottom. The notebook uses the project's Python functions so that its analysis follows the same logic as the main pipeline.
 
-`notebooks/01_walmart_financial_planning_scenario_modelling.ipynb`
-
-Run cells from top to bottom. The notebook uses the same functions as `run_analysis.py`, so it documents the application pipeline rather than a disconnected tutorial.
-
-#### 4. Run the Vite dashboard
+### 5. Run the dashboard locally
 
 ```bash
 cd frontend
@@ -170,69 +151,27 @@ npm install
 npm run dev
 ```
 
-`npm install` is required once on a fresh download — `node_modules` is not included in the ZIP.
-If it is skipped, `npm run dev` fails with `'vite' is not recognized as an internal or external command`.
-
-Open the local URL printed by Vite, normally `http://localhost:5173`. The terminal running
-`npm run dev` must stay open; closing it stops the dashboard.
-
-The dashboard has no file-upload interface. It reads the fixed JSON generated by the Python pipeline.
-
-> **Note:** `python run_analysis.py` only works with the virtual environment activated, because
-> pandas/scikit-learn are installed in `.venv`, not in the system Python. Use
-> `.\.venv\Scripts\python.exe run_analysis.py` if you have not activated it.
-
-## Dashboard pages
-
-- **Revenue forecast:** historical weekly actuals, reference plan, selected forecast, indicative backtest error band, forecast KPIs and store-format summary.
-- **Scenario planning:** base, upside and conservative cases with editable demand, price/mix, contribution-margin and operating-expense assumptions.
-- **Business lines:** store-type forecast comparison and 13-week planning blocks.
-- **Model & data:** recursive backtest, WMAE / WMAPE / RMSE, dataset profile, cleaning audit and methodology notes.
-
-## Vercel deployment
-
-The frontend is a static React/Vite application. Python runs locally or in a controlled analysis environment; Vercel serves the prepared JSON and built frontend.
-
-Before deployment:
-
-1. Download the competition data locally.
-2. Run `python run_analysis.py`.
-3. Confirm `frontend/public/data/financial_plan.json` exists and is valid.
-4. Review the Kaggle competition terms before making derived output publicly accessible.
-5. Push the frontend and approved generated dashboard JSON to the repository.
-
-Vercel settings:
-
-| Setting | Value |
-|---|---|
-| Framework Preset | Vite |
-| Root Directory | `frontend` |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Install Command | `npm install` |
-| Node.js | 20 or later (22 recommended) |
+Open the local address printed by Vite, usually `http://localhost:5173`.
 
 ## Tests
 
-From the repository root:
+From the project root:
 
 ```bash
 python -m pytest
 ```
 
-The unit tests cover duplicate-key handling, feature-table deduplication, backward-looking lag features and scenario calculations. The full competition data is needed for an end-to-end run.
+The tests cover selected data preparation, feature engineering, and scenario calculations. Run the complete pipeline with the downloaded source files for an end-to-end check.
 
-## Limitations and responsible presentation
+## Limitations
 
-- Historical observations are from the 2010–2012 competition period; they are not current Walmart operating results.
-- Store and department identifiers are anonymised; do not infer actual store locations or department names.
-- The test-period forecast is an exercise in forecasting, not a verified prediction of actual future Walmart sales.
-- Markdown features are sparse by design in parts of the history. Missing markdown values are set to zero; macro features are forward-filled within store and then median-imputed.
-- Negative historical weekly sales are retained as source adjustments; forecast values are clipped at zero.
-- The model is a portfolio demonstration. A production FP&A process would need finance-owned budgets, audited cost drivers, reconciliation, rolling-origin validation and forecast governance.
+- The source data is historical and should not be treated as current business performance.
+- Store and department identifiers are anonymised; they do not support identifying real-world store locations or department names.
+- The future-period forecast is a modelling exercise, not a verified prediction of actual future sales.
+- The source data does not include complete operating expenses, payroll, depreciation, interest, tax, working capital, or cash-flow statements.
+- The modelled planning outputs depend on explicit assumptions and require finance-owner validation before any real business use.
+- A production planning process would require approved budgets, reconciled financial data, documented forecast governance, and ongoing model monitoring.
 
-## Suggested portfolio description
+## Project positioning
 
-**Northstar FP&A — Financial Planning & Scenario Modelling** is an end-to-end planning workspace built on a 421k-row weekly retail sales panel. It combines Pandas data preparation, time-aware machine-learning forecasts, recursive backtesting, transparent reference-plan construction and editable financial scenarios in a React/Vite dashboard, with a guided Jupyter notebook for reproducibility.
-#   F i n a n c i a l - P l a n n i n g - a n d - S c e n a r i o - m o d e l l i n g  
- 
+Northstar FP&A demonstrates an end-to-end approach to financial planning and analysis: preparing historical data, examining performance drivers, building and evaluating forecasts, testing alternative planning assumptions, and communicating the results through an executive-oriented dashboard and a reproducible Jupyter notebook.
