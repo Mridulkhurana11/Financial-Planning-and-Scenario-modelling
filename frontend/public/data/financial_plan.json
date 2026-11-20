@@ -1,0 +1,2472 @@
+{
+  "metadata": {
+    "dataset": "Walmart Recruiting - Store Sales Forecasting",
+    "source_url": "https://www.kaggle.com/competitions/walmart-recruiting-store-sales-forecasting/data",
+    "currency": "USD",
+    "historical_start": "2010-02-05",
+    "historical_end": "2012-10-26",
+    "forecast_start": "2012-11-02",
+    "forecast_end": "2013-07-26",
+    "historical_rows": 421570,
+    "forecast_rows": 115064,
+    "stores": 45,
+    "departments": 81,
+    "store_types": [
+      "A",
+      "B",
+      "C"
+    ],
+    "historical_weeks": 143,
+    "forecast_weeks": 39,
+    "plan_definition": "Illustrative reference plan: same ISO week historical average by store/department, with a 2% planning uplift. It is not an approved company budget.",
+    "financial_assumption_note": "The source has Weekly_Sales but no COGS, payroll or operating expense ledger. Contribution and operating contribution are modelled using editable assumptions, not reported actual profit.",
+    "forecast_band_note": "Indicative range derived from the 90th percentile of absolute weekly percentage errors in a recursive time-based backtest. It is not a calibrated probabilistic confidence interval."
+  },
+  "kpis": {
+    "last_52_week_sales": 2498373316.7,
+    "forecast_revenue_base": 2059118809.6392388,
+    "reference_plan_revenue": 1912505792.6215162,
+    "plan_variance": 146613017.0177226,
+    "plan_variance_pct": 0.0766601688650348,
+    "modelled_operating_contribution_base": 288276633.34949344,
+    "forecast_band_pct": 0.08152980485256714,
+    "forecast_lower_base": 1891239254.9211013,
+    "forecast_upper_base": 2226998364.3573766
+  },
+  "metrics": {
+    "validation_weekly": [
+      {
+        "Date": "2012-08-03",
+        "actual": 47485899.56,
+        "predicted": 46156732.34727976,
+        "absolute_pct_error": 0.0279907767
+      },
+      {
+        "Date": "2012-08-10",
+        "actual": 47403451.04,
+        "predicted": 45266970.06672478,
+        "absolute_pct_error": 0.0450701568
+      },
+      {
+        "Date": "2012-08-17",
+        "actual": 47354452.05,
+        "predicted": 44712906.1077237,
+        "absolute_pct_error": 0.0557824202
+      },
+      {
+        "Date": "2012-08-24",
+        "actual": 47447323.6,
+        "predicted": 44416955.08029267,
+        "absolute_pct_error": 0.0638680602
+      },
+      {
+        "Date": "2012-08-31",
+        "actual": 47159639.43,
+        "predicted": 44359761.13275999,
+        "absolute_pct_error": 0.0593702227
+      },
+      {
+        "Date": "2012-09-07",
+        "actual": 48330059.31,
+        "predicted": 45181961.672025256,
+        "absolute_pct_error": 0.0651374669
+      },
+      {
+        "Date": "2012-09-14",
+        "actual": 44226038.65,
+        "predicted": 42948100.46889003,
+        "absolute_pct_error": 0.0288956058
+      },
+      {
+        "Date": "2012-09-21",
+        "actual": 44354547.11,
+        "predicted": 41740627.761629686,
+        "absolute_pct_error": 0.0589323873
+      },
+      {
+        "Date": "2012-09-28",
+        "actual": 43734899.4,
+        "predicted": 41472423.59675243,
+        "absolute_pct_error": 0.0517315881
+      },
+      {
+        "Date": "2012-10-05",
+        "actual": 47566639.31,
+        "predicted": 43451426.029024646,
+        "absolute_pct_error": 0.0865146948
+      },
+      {
+        "Date": "2012-10-12",
+        "actual": 46128514.25,
+        "predicted": 42307187.9261323,
+        "absolute_pct_error": 0.0828408716
+      },
+      {
+        "Date": "2012-10-19",
+        "actual": 45122410.57,
+        "predicted": 42219330.79431522,
+        "absolute_pct_error": 0.0643378698
+      },
+      {
+        "Date": "2012-10-26",
+        "actual": 45544116.29,
+        "predicted": 42069758.8735808,
+        "absolute_pct_error": 0.0762855381
+      }
+    ],
+    "validation_start": "2012-08-03",
+    "validation_weeks": 13,
+    "validation_rows": 38530,
+    "mae_usd": 2049.9500039441914,
+    "rmse_usd": 3951.6858597580303,
+    "holiday_weighted_mae_usd": 2120.0097959713853,
+    "holiday_weighted_mape": 0.13435144329401522,
+    "backtest_p90_error_band_pct": 0.08152980485256714,
+    "evaluation_note": "Last 13 (or available minimum) weeks held out; recursive predictions use only prior actuals/predictions. Holiday rows receive 5x weight for weighted MAE."
+  },
+  "audit": {
+    "source": "Walmart Recruiting - Store Sales Forecasting",
+    "source_rows": {
+      "train": 421570,
+      "test": 115064,
+      "features": 8190,
+      "stores": 45
+    },
+    "train_cleaning": {
+      "source_rows": 421570,
+      "usable_rows": 421570,
+      "duplicate_store_dept_week_rows_removed": 0,
+      "invalid_sales_rows_removed": 0
+    },
+    "test_cleaning": {
+      "source_rows": 115064,
+      "usable_rows": 115064,
+      "duplicate_store_dept_week_rows_removed": 0,
+      "invalid_sales_rows_removed": 0
+    },
+    "feature_cleaning": {
+      "feature_source_rows": 8190,
+      "feature_rows_after_dedup": 8190,
+      "duplicate_store_week_rows_collapsed": 0,
+      "stores_in_metadata": 45
+    },
+    "train_rows_without_store_week_features": 0,
+    "test_rows_without_store_week_features": 0,
+    "date_start": "2010-02-05",
+    "date_end": "2012-10-26",
+    "stores": 45,
+    "departments": 81,
+    "store_types": [
+      "A",
+      "B",
+      "C"
+    ],
+    "weeks": 143
+  },
+  "historical_weekly": [
+    {
+      "Date": "2011-11-04",
+      "actual_sales": 48655544.3,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2011-11-11",
+      "actual_sales": 48474224.75,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2011-11-18",
+      "actual_sales": 46438980.56,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2011-11-25",
+      "actual_sales": 66593605.26,
+      "holiday_week": 1,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2011-12-02",
+      "actual_sales": 49390556.49,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 80
+    },
+    {
+      "Date": "2011-12-09",
+      "actual_sales": 55561147.7,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2011-12-16",
+      "actual_sales": 60085695.94,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2011-12-23",
+      "actual_sales": 76998241.31,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 80
+    },
+    {
+      "Date": "2011-12-30",
+      "actual_sales": 46042461.04,
+      "holiday_week": 1,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-01-06",
+      "actual_sales": 44955421.95,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-01-13",
+      "actual_sales": 42023078.48,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-01-20",
+      "actual_sales": 42080996.56,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 80
+    },
+    {
+      "Date": "2012-01-27",
+      "actual_sales": 39834974.67,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-02-03",
+      "actual_sales": 46085608.09,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-02-10",
+      "actual_sales": 50009407.92,
+      "holiday_week": 1,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-02-17",
+      "actual_sales": 50197056.96,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-02-24",
+      "actual_sales": 45771506.57,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-03-02",
+      "actual_sales": 46861034.97,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-03-09",
+      "actual_sales": 47480454.11,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-03-16",
+      "actual_sales": 46901504.94,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-03-23",
+      "actual_sales": 44993794.45,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-03-30",
+      "actual_sales": 45272862.02,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 76
+    },
+    {
+      "Date": "2012-04-06",
+      "actual_sales": 53502315.87,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-04-13",
+      "actual_sales": 46629261.41,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-04-20",
+      "actual_sales": 45072529.78,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-04-27",
+      "actual_sales": 43716798.89,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 76
+    },
+    {
+      "Date": "2012-05-04",
+      "actual_sales": 47124197.93,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-05-11",
+      "actual_sales": 46925878.99,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 80
+    },
+    {
+      "Date": "2012-05-18",
+      "actual_sales": 46823939.22,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-05-25",
+      "actual_sales": 47892463.31,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-06-01",
+      "actual_sales": 48281649.72,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-06-08",
+      "actual_sales": 49651171.78,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-06-15",
+      "actual_sales": 48412110.7,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-06-22",
+      "actual_sales": 47668284.97,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-06-29",
+      "actual_sales": 46597112.12,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-07-06",
+      "actual_sales": 51253021.88,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-07-13",
+      "actual_sales": 46099732.1,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-07-20",
+      "actual_sales": 46059543.45,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-07-27",
+      "actual_sales": 44097154.97,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-08-03",
+      "actual_sales": 47485899.56,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-08-10",
+      "actual_sales": 47403451.04,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-08-17",
+      "actual_sales": 47354452.05,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-08-24",
+      "actual_sales": 47447323.6,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-08-31",
+      "actual_sales": 47159639.43,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-09-07",
+      "actual_sales": 48330059.31,
+      "holiday_week": 1,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-09-14",
+      "actual_sales": 44226038.65,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-09-21",
+      "actual_sales": 44354547.11,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-09-28",
+      "actual_sales": 43734899.4,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    },
+    {
+      "Date": "2012-10-05",
+      "actual_sales": 47566639.31,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 77
+    },
+    {
+      "Date": "2012-10-12",
+      "actual_sales": 46128514.25,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 79
+    },
+    {
+      "Date": "2012-10-19",
+      "actual_sales": 45122410.57,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 76
+    },
+    {
+      "Date": "2012-10-26",
+      "actual_sales": 45544116.29,
+      "holiday_week": 0,
+      "store_count": 45,
+      "department_count": 78
+    }
+  ],
+  "monthly_actuals": [
+    {
+      "month": "2010-02-01",
+      "actual_sales": 190332983.04,
+      "holiday_sales": 48336677.63
+    },
+    {
+      "month": "2010-03-01",
+      "actual_sales": 181919802.5,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-04-01",
+      "actual_sales": 231412368.05,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-05-01",
+      "actual_sales": 186710934.34,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-06-01",
+      "actual_sales": 192246172.36,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-07-01",
+      "actual_sales": 232580125.98,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-08-01",
+      "actual_sales": 187640110.89,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-09-01",
+      "actual_sales": 177267896.37,
+      "holiday_sales": 45634397.839999996
+    },
+    {
+      "month": "2010-10-01",
+      "actual_sales": 217161824.02,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2010-11-01",
+      "actual_sales": 202853370.14,
+      "holiday_sales": 65821003.239999995
+    },
+    {
+      "month": "2010-12-01",
+      "actual_sales": 288760532.72,
+      "holiday_sales": 40432519.0
+    },
+    {
+      "month": "2011-01-01",
+      "actual_sales": 163703966.83,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-02-01",
+      "actual_sales": 186331327.87,
+      "holiday_sales": 47336192.79
+    },
+    {
+      "month": "2011-03-01",
+      "actual_sales": 179356448.29,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-04-01",
+      "actual_sales": 226526510.97,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-05-01",
+      "actual_sales": 181648158.16,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-06-01",
+      "actual_sales": 189773385.19,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-07-01",
+      "actual_sales": 229911398.87,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-08-01",
+      "actual_sales": 188599332.25,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-09-01",
+      "actual_sales": 220847738.42,
+      "holiday_sales": 46763227.53
+    },
+    {
+      "month": "2011-10-01",
+      "actual_sales": 183261283.15,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2011-11-01",
+      "actual_sales": 210162354.87,
+      "holiday_sales": 66593605.25999999
+    },
+    {
+      "month": "2011-12-01",
+      "actual_sales": 288078102.48,
+      "holiday_sales": 46042461.04000001
+    },
+    {
+      "month": "2012-01-01",
+      "actual_sales": 168894471.66,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-02-01",
+      "actual_sales": 192063579.54,
+      "holiday_sales": 50009407.92
+    },
+    {
+      "month": "2012-03-01",
+      "actual_sales": 231509650.49,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-04-01",
+      "actual_sales": 188920905.95,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-05-01",
+      "actual_sales": 188766479.45,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-06-01",
+      "actual_sales": 240610329.29,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-07-01",
+      "actual_sales": 187509452.4,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-08-01",
+      "actual_sales": 236850765.68,
+      "holiday_sales": 0.0
+    },
+    {
+      "month": "2012-09-01",
+      "actual_sales": 180645544.47,
+      "holiday_sales": 48330059.31
+    },
+    {
+      "month": "2012-10-01",
+      "actual_sales": 184361680.42,
+      "holiday_sales": 0.0
+    }
+  ],
+  "forecast_weekly": [
+    {
+      "Date": "2012-11-02",
+      "model_forecast": 46901176.04096034,
+      "reference_plan": 48186738.75696641,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 43077332.31098495,
+      "range_upper": 50725019.77093574
+    },
+    {
+      "Date": "2012-11-09",
+      "model_forecast": 46958158.84093315,
+      "reference_plan": 48265113.95781564,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 43129669.314396024,
+      "range_upper": 50786648.36747029
+    },
+    {
+      "Date": "2012-11-16",
+      "model_forecast": 47212042.6787679,
+      "reference_plan": 46699773.92080231,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 43362854.05247688,
+      "range_upper": 51061231.30505892
+    },
+    {
+      "Date": "2012-11-23",
+      "model_forecast": 65528571.10598125,
+      "reference_plan": 67567543.67575616,
+      "holiday_week": 1,
+      "store_count": 45,
+      "range_lower": 60186039.49144303,
+      "range_upper": 70871102.72051948
+    },
+    {
+      "Date": "2012-11-30",
+      "model_forecast": 54293789.274850346,
+      "reference_plan": 50664595.43300385,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49867227.2305654,
+      "range_upper": 58720351.3191353
+    },
+    {
+      "Date": "2012-12-07",
+      "model_forecast": 58651882.730955444,
+      "reference_plan": 56758699.91701923,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 53870006.177664995,
+      "range_upper": 63433759.2842459
+    },
+    {
+      "Date": "2012-12-14",
+      "model_forecast": 63075158.28298329,
+      "reference_plan": 62211625.28479103,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 57932652.937126875,
+      "range_upper": 68217663.6288397
+    },
+    {
+      "Date": "2012-12-21",
+      "model_forecast": 78965258.46703215,
+      "reference_plan": 80605212.17439488,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 72527236.3540825,
+      "range_upper": 85403280.57998182
+    },
+    {
+      "Date": "2012-12-28",
+      "model_forecast": 48088749.2516458,
+      "reference_plan": 44118055.26637615,
+      "holiday_week": 1,
+      "store_count": 45,
+      "range_lower": 44168082.909555085,
+      "range_upper": 52009415.59373652
+    },
+    {
+      "Date": "2013-01-04",
+      "model_forecast": 47233789.87435199,
+      "reference_plan": 44759678.944798715,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 43382828.203448914,
+      "range_upper": 51084751.54525508
+    },
+    {
+      "Date": "2013-01-11",
+      "model_forecast": 46133260.04508412,
+      "reference_plan": 42196032.52727949,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 42372024.35639568,
+      "range_upper": 49894495.73377256
+    },
+    {
+      "Date": "2013-01-18",
+      "model_forecast": 45984224.499194846,
+      "reference_plan": 42217001.522444874,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 42235139.64947885,
+      "range_upper": 49733309.34891084
+    },
+    {
+      "Date": "2013-01-25",
+      "model_forecast": 44235158.65592334,
+      "reference_plan": 40535083.945323996,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 40628674.80308356,
+      "range_upper": 47841642.50876312
+    },
+    {
+      "Date": "2013-02-01",
+      "model_forecast": 49170234.13927754,
+      "reference_plan": 48310250.842971794,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45161394.54534721,
+      "range_upper": 53179073.733207874
+    },
+    {
+      "Date": "2013-02-08",
+      "model_forecast": 51858605.50526054,
+      "reference_plan": 49579120.72280641,
+      "holiday_week": 1,
+      "store_count": 45,
+      "range_lower": 47630583.51849039,
+      "range_upper": 56086627.4920307
+    },
+    {
+      "Date": "2013-02-15",
+      "model_forecast": 51838583.24723714,
+      "reference_plan": 50082549.47964487,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 47612193.67125634,
+      "range_upper": 56064972.82321794
+    },
+    {
+      "Date": "2013-02-22",
+      "model_forecast": 49087015.08544301,
+      "reference_plan": 45533672.66007075,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45084960.32473183,
+      "range_upper": 53089069.846154206
+    },
+    {
+      "Date": "2013-03-01",
+      "model_forecast": 49744488.678262815,
+      "reference_plan": 47862742.65156923,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45688830.223833315,
+      "range_upper": 53800147.13269232
+    },
+    {
+      "Date": "2013-03-08",
+      "model_forecast": 49864278.90534506,
+      "reference_plan": 46946291.33361026,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45798853.977078296,
+      "range_upper": 53929703.83361182
+    },
+    {
+      "Date": "2013-03-15",
+      "model_forecast": 49484758.02584787,
+      "reference_plan": 46523669.66428,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45450275.36082399,
+      "range_upper": 53519240.69087175
+    },
+    {
+      "Date": "2013-03-22",
+      "model_forecast": 49934739.652521916,
+      "reference_plan": 44899933.052434616,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 45863570.07328806,
+      "range_upper": 54005909.23175578
+    },
+    {
+      "Date": "2013-03-29",
+      "model_forecast": 53776649.74476754,
+      "reference_plan": 47328316.886390254,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49392249.98545179,
+      "range_upper": 58161049.5040833
+    },
+    {
+      "Date": "2013-04-05",
+      "model_forecast": 56457387.43463789,
+      "reference_plan": 49918200.265669376,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 51854427.65460609,
+      "range_upper": 61060347.2146697
+    },
+    {
+      "Date": "2013-04-12",
+      "model_forecast": 52792637.830368035,
+      "reference_plan": 46523483.66203553,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 48488464.370405875,
+      "range_upper": 57096811.2903302
+    },
+    {
+      "Date": "2013-04-19",
+      "model_forecast": 52239571.981702544,
+      "reference_plan": 47105325.91615626,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 47980489.872452706,
+      "range_upper": 56498654.09095239
+    },
+    {
+      "Date": "2013-04-26",
+      "model_forecast": 52126636.11799158,
+      "reference_plan": 44562384.53858383,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 47876761.647670954,
+      "range_upper": 56376510.588312216
+    },
+    {
+      "Date": "2013-05-03",
+      "model_forecast": 53509333.450231045,
+      "reference_plan": 48462302.13004322,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49146727.93624277,
+      "range_upper": 57871938.96421933
+    },
+    {
+      "Date": "2013-05-10",
+      "model_forecast": 52754975.43204644,
+      "reference_plan": 46839499.24611026,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 48453872.58006972,
+      "range_upper": 57056078.284023166
+    },
+    {
+      "Date": "2013-05-17",
+      "model_forecast": 52746357.541925676,
+      "reference_plan": 46275055.54726652,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 48445957.304848745,
+      "range_upper": 57046757.779002614
+    },
+    {
+      "Date": "2013-05-24",
+      "model_forecast": 53560642.60144884,
+      "reference_plan": 47952441.57797949,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49193853.862374626,
+      "range_upper": 57927431.340523064
+    },
+    {
+      "Date": "2013-05-31",
+      "model_forecast": 54190208.944141075,
+      "reference_plan": 50098227.09110806,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49772091.78400542,
+      "range_upper": 58608326.10427674
+    },
+    {
+      "Date": "2013-06-07",
+      "model_forecast": 54131783.357282415,
+      "reference_plan": 49374887.56800257,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49718429.62384174,
+      "range_upper": 58545137.0907231
+    },
+    {
+      "Date": "2013-06-14",
+      "model_forecast": 53963428.820671976,
+      "reference_plan": 48815799.16744718,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49563800.999747194,
+      "range_upper": 58363056.641596764
+    },
+    {
+      "Date": "2013-06-21",
+      "model_forecast": 54102160.77038302,
+      "reference_plan": 47693341.02830476,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49691222.16067148,
+      "range_upper": 58513099.380094565
+    },
+    {
+      "Date": "2013-06-28",
+      "model_forecast": 54058119.53595544,
+      "reference_plan": 48665907.542211905,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49650771.599492244,
+      "range_upper": 58465467.472418636
+    },
+    {
+      "Date": "2013-07-05",
+      "model_forecast": 55117827.056048445,
+      "reference_plan": 50026830.83215795,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 50624081.37227127,
+      "range_upper": 59611572.73982562
+    },
+    {
+      "Date": "2013-07-12",
+      "model_forecast": 53574839.75913026,
+      "reference_plan": 46899779.92356121,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 49206893.52856082,
+      "range_upper": 57942785.989699714
+    },
+    {
+      "Date": "2013-07-19",
+      "model_forecast": 53201961.64523783,
+      "reference_plan": 46368321.94804582,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 48864416.09452783,
+      "range_upper": 57539507.19594784
+    },
+    {
+      "Date": "2013-07-26",
+      "model_forecast": 52570364.62740894,
+      "reference_plan": 45072302.01628172,
+      "holiday_week": 0,
+      "store_count": 45,
+      "range_lower": 48284313.05830799,
+      "range_upper": 56856416.19650989
+    }
+  ],
+  "segments": [
+    {
+      "Type": "A",
+      "forecast_revenue": 1304585863.5582466,
+      "reference_plan": 1227729251.8565147,
+      "stores": 22,
+      "departments": 81,
+      "variance": 76856611.70173192
+    },
+    {
+      "Type": "B",
+      "forecast_revenue": 624374361.354943,
+      "reference_plan": 571845864.6584098,
+      "stores": 17,
+      "departments": 77,
+      "variance": 52528496.6965332
+    },
+    {
+      "Type": "C",
+      "forecast_revenue": 130158584.72604927,
+      "reference_plan": 112930676.10659206,
+      "stores": 6,
+      "departments": 64,
+      "variance": 17227908.619457215
+    }
+  ],
+  "segment_quarter": [
+    {
+      "Type": "A",
+      "planning_quarter": "Q1",
+      "forecast_revenue": 440534433.9810166,
+      "reference_plan": 431931219.0462571,
+      "stores": 22,
+      "departments": 81,
+      "variance": 8603214.934759498
+    },
+    {
+      "Type": "A",
+      "planning_quarter": "Q2",
+      "forecast_revenue": 424598852.59807193,
+      "reference_plan": 395786715.68228734,
+      "stores": 22,
+      "departments": 80,
+      "variance": 28812136.915784597
+    },
+    {
+      "Type": "A",
+      "planning_quarter": "Q3",
+      "forecast_revenue": 439452576.97915804,
+      "reference_plan": 400011317.1279703,
+      "stores": 22,
+      "departments": 78,
+      "variance": 39441259.851187766
+    },
+    {
+      "Type": "B",
+      "planning_quarter": "Q1",
+      "forecast_revenue": 210832200.85977837,
+      "reference_plan": 205345332.35901693,
+      "stores": 17,
+      "departments": 75,
+      "variance": 5486868.500761449
+    },
+    {
+      "Type": "B",
+      "planning_quarter": "Q2",
+      "forecast_revenue": 200079030.26933852,
+      "reference_plan": 181521847.47323796,
+      "stores": 17,
+      "departments": 77,
+      "variance": 18557182.796100557
+    },
+    {
+      "Type": "B",
+      "planning_quarter": "Q3",
+      "forecast_revenue": 213463130.22582617,
+      "reference_plan": 184978684.82615495,
+      "stores": 17,
+      "departments": 75,
+      "variance": 28484445.399671227
+    },
+    {
+      "Type": "C",
+      "planning_quarter": "Q1",
+      "forecast_revenue": 41894584.90786902,
+      "reference_plan": 37508603.921498716,
+      "stores": 6,
+      "departments": 62,
+      "variance": 4385980.986370303
+    },
+    {
+      "Type": "C",
+      "planning_quarter": "Q2",
+      "forecast_revenue": 43697703.48125304,
+      "reference_plan": 37867378.52069789,
+      "stores": 6,
+      "departments": 63,
+      "variance": 5830324.960555151
+    },
+    {
+      "Type": "C",
+      "planning_quarter": "Q3",
+      "forecast_revenue": 44566296.33692721,
+      "reference_plan": 37554693.66439545,
+      "stores": 6,
+      "departments": 62,
+      "variance": 7011602.672531761
+    }
+  ],
+  "recent_segment_actuals": [
+    {
+      "Type": "A",
+      "recent_actual": 387393882.04
+    },
+    {
+      "Type": "B",
+      "recent_actual": 176655534.57
+    },
+    {
+      "Type": "C",
+      "recent_actual": 37808573.96
+    }
+  ],
+  "store_performance": [
+    {
+      "Store": 1,
+      "Type": "A",
+      "historical_sales": 222402808.85,
+      "departments": 77,
+      "recent_actual": 20265588.4,
+      "forecast_revenue": 68871186.4955196,
+      "reference_plan": 63071435.97234616,
+      "variance": 5799750.5231734365
+    },
+    {
+      "Store": 2,
+      "Type": "A",
+      "historical_sales": 275382440.98,
+      "departments": 78,
+      "recent_actual": 24435696.92,
+      "forecast_revenue": 82163944.75160968,
+      "reference_plan": 78633068.39092308,
+      "variance": 3530876.3606866
+    },
+    {
+      "Store": 3,
+      "Type": "B",
+      "historical_sales": 57586735.07,
+      "departments": 72,
+      "recent_actual": 5332340.94,
+      "forecast_revenue": 19577812.981219873,
+      "reference_plan": 16425669.644323077,
+      "variance": 3152143.336896796
+    },
+    {
+      "Store": 4,
+      "Type": "A",
+      "historical_sales": 299543953.38,
+      "departments": 78,
+      "recent_actual": 27837586.04,
+      "forecast_revenue": 92928840.61985849,
+      "reference_plan": 84808887.12343846,
+      "variance": 8119953.496420026
+    },
+    {
+      "Store": 5,
+      "Type": "B",
+      "historical_sales": 45475688.9,
+      "departments": 72,
+      "recent_actual": 4179643.06,
+      "forecast_revenue": 16589300.62107826,
+      "reference_plan": 12964578.555572027,
+      "variance": 3624722.065506233
+    },
+    {
+      "Store": 6,
+      "Type": "A",
+      "historical_sales": 223756130.64,
+      "departments": 77,
+      "recent_actual": 19461104.34,
+      "forecast_revenue": 65784801.049153686,
+      "reference_plan": 64314846.58803846,
+      "variance": 1469954.4611152261
+    },
+    {
+      "Store": 7,
+      "Type": "B",
+      "historical_sales": 81598275.14,
+      "departments": 76,
+      "recent_actual": 7411545.4,
+      "forecast_revenue": 25496699.598690316,
+      "reference_plan": 23295422.10043846,
+      "variance": 2201277.4982518554
+    },
+    {
+      "Store": 8,
+      "Type": "A",
+      "historical_sales": 129951181.13,
+      "departments": 76,
+      "recent_actual": 11891126.8,
+      "forecast_revenue": 40155391.58963562,
+      "reference_plan": 36879862.696392305,
+      "variance": 3275528.893243313
+    },
+    {
+      "Store": 9,
+      "Type": "B",
+      "historical_sales": 77789218.99,
+      "departments": 73,
+      "recent_actual": 7153840.04,
+      "forecast_revenue": 24106611.25894566,
+      "reference_plan": 22145794.546515387,
+      "variance": 1960816.7124302723
+    },
+    {
+      "Store": 10,
+      "Type": "B",
+      "historical_sales": 271617713.89,
+      "departments": 77,
+      "recent_actual": 22730160.73,
+      "forecast_revenue": 80018073.53803419,
+      "reference_plan": 78602561.44251539,
+      "variance": 1415512.0955187976
+    },
+    {
+      "Store": 11,
+      "Type": "A",
+      "historical_sales": 193962786.8,
+      "departments": 78,
+      "recent_actual": 17285395.14,
+      "forecast_revenue": 55126994.71694479,
+      "reference_plan": 55167159.06538462,
+      "variance": -40164.3484398276
+    },
+    {
+      "Store": 12,
+      "Type": "B",
+      "historical_sales": 144287230.15,
+      "departments": 75,
+      "recent_actual": 12552981.0,
+      "forecast_revenue": 46827886.04360336,
+      "reference_plan": 41361662.76657692,
+      "variance": 5466223.277026437
+    },
+    {
+      "Store": 13,
+      "Type": "A",
+      "historical_sales": 286517703.8,
+      "departments": 79,
+      "recent_actual": 26360206.1,
+      "forecast_revenue": 87556900.87979332,
+      "reference_plan": 81284810.83951077,
+      "variance": 6272090.0402825475
+    },
+    {
+      "Store": 14,
+      "Type": "A",
+      "historical_sales": 288999911.34,
+      "departments": 77,
+      "recent_actual": 21370054.64,
+      "forecast_revenue": 76721579.56643964,
+      "reference_plan": 83068063.69926924,
+      "variance": -6346484.132829592
+    },
+    {
+      "Store": 15,
+      "Type": "B",
+      "historical_sales": 89133683.92,
+      "departments": 79,
+      "recent_actual": 7418585.37,
+      "forecast_revenue": 26554056.380759723,
+      "reference_plan": 25653203.68903077,
+      "variance": 900852.6917289533
+    },
+    {
+      "Store": 16,
+      "Type": "B",
+      "historical_sales": 74252425.4,
+      "departments": 76,
+      "recent_actual": 6822205.62,
+      "forecast_revenue": 23625650.24187811,
+      "reference_plan": 20856722.495876923,
+      "variance": 2768927.7460011877
+    },
+    {
+      "Store": 17,
+      "Type": "B",
+      "historical_sales": 127782138.83,
+      "departments": 76,
+      "recent_actual": 12373042.19,
+      "forecast_revenue": 41540592.098980166,
+      "reference_plan": 35653260.16202088,
+      "variance": 5887331.936959289
+    },
+    {
+      "Store": 18,
+      "Type": "B",
+      "historical_sales": 155114734.21,
+      "departments": 78,
+      "recent_actual": 13691190.01,
+      "forecast_revenue": 48144360.03062242,
+      "reference_plan": 44493003.018376924,
+      "variance": 3651357.0122454986
+    },
+    {
+      "Store": 19,
+      "Type": "A",
+      "historical_sales": 206634862.1,
+      "departments": 79,
+      "recent_actual": 18162150.62,
+      "forecast_revenue": 62367238.93810708,
+      "reference_plan": 58381857.44842308,
+      "variance": 3985381.4896840006
+    },
+    {
+      "Store": 20,
+      "Type": "A",
+      "historical_sales": 301397792.46,
+      "departments": 78,
+      "recent_actual": 26957439.46,
+      "forecast_revenue": 93400219.32517089,
+      "reference_plan": 85934128.88578205,
+      "variance": 7466090.439388841
+    },
+    {
+      "Store": 21,
+      "Type": "B",
+      "historical_sales": 108117878.92,
+      "departments": 77,
+      "recent_actual": 8918847.26,
+      "forecast_revenue": 32400727.872700036,
+      "reference_plan": 31079690.21353846,
+      "variance": 1321037.6591615751
+    },
+    {
+      "Store": 22,
+      "Type": "B",
+      "historical_sales": 147075648.57,
+      "departments": 76,
+      "recent_actual": 12944669.45,
+      "forecast_revenue": 46368134.12158153,
+      "reference_plan": 41938766.90654,
+      "variance": 4429367.215041533
+    },
+    {
+      "Store": 23,
+      "Type": "B",
+      "historical_sales": 198750617.85,
+      "departments": 77,
+      "recent_actual": 18595077.97,
+      "forecast_revenue": 61553417.85611685,
+      "reference_plan": 56296186.8102,
+      "variance": 5257231.045916855
+    },
+    {
+      "Store": 24,
+      "Type": "A",
+      "historical_sales": 194016021.28,
+      "departments": 77,
+      "recent_actual": 17619784.89,
+      "forecast_revenue": 60737898.50996289,
+      "reference_plan": 54540323.5288359,
+      "variance": 6197574.981126986
+    },
+    {
+      "Store": 25,
+      "Type": "B",
+      "historical_sales": 101061179.17,
+      "departments": 77,
+      "recent_actual": 9068143.16,
+      "forecast_revenue": 30885605.1975419,
+      "reference_plan": 28935067.511207692,
+      "variance": 1950537.6863342077
+    },
+    {
+      "Store": 26,
+      "Type": "A",
+      "historical_sales": 143416393.79,
+      "departments": 76,
+      "recent_actual": 13425042.06,
+      "forecast_revenue": 43801331.62989639,
+      "reference_plan": 39968972.05217692,
+      "variance": 3832359.577719465
+    },
+    {
+      "Store": 27,
+      "Type": "A",
+      "historical_sales": 253855916.88,
+      "departments": 78,
+      "recent_actual": 21708119.74,
+      "forecast_revenue": 73180215.28294016,
+      "reference_plan": 71814857.05788462,
+      "variance": 1365358.2250555456
+    },
+    {
+      "Store": 28,
+      "Type": "A",
+      "historical_sales": 189263680.58,
+      "departments": 77,
+      "recent_actual": 16141526.65,
+      "forecast_revenue": 54536085.4261615,
+      "reference_plan": 53921292.49055385,
+      "variance": 614792.9356076494
+    },
+    {
+      "Store": 29,
+      "Type": "B",
+      "historical_sales": 77141554.31,
+      "departments": 77,
+      "recent_actual": 6682078.09,
+      "forecast_revenue": 24585317.504492372,
+      "reference_plan": 22199231.164884616,
+      "variance": 2386086.3396077566
+    },
+    {
+      "Store": 30,
+      "Type": "C",
+      "historical_sales": 62716885.12,
+      "departments": 64,
+      "recent_actual": 5642742.39,
+      "forecast_revenue": 19704593.126396876,
+      "reference_plan": 17577070.099248078,
+      "variance": 2127523.027148798
+    },
+    {
+      "Store": 31,
+      "Type": "A",
+      "historical_sales": 199613905.5,
+      "departments": 76,
+      "recent_actual": 17761667.6,
+      "forecast_revenue": 59879332.9270133,
+      "reference_plan": 56514806.073427476,
+      "variance": 3364526.8535858244
+    },
+    {
+      "Store": 32,
+      "Type": "A",
+      "historical_sales": 166819246.16,
+      "departments": 77,
+      "recent_actual": 15527157.37,
+      "forecast_revenue": 52196966.82786017,
+      "reference_plan": 47041183.13973846,
+      "variance": 5155783.688121706
+    },
+    {
+      "Store": 33,
+      "Type": "A",
+      "historical_sales": 37160221.96,
+      "departments": 63,
+      "recent_actual": 3435925.66,
+      "forecast_revenue": 12152374.90373922,
+      "reference_plan": 10372345.716178462,
+      "variance": 1780029.1875607576
+    },
+    {
+      "Store": 34,
+      "Type": "A",
+      "historical_sales": 138249763.0,
+      "departments": 78,
+      "recent_actual": 12492651.29,
+      "forecast_revenue": 41785403.67225828,
+      "reference_plan": 39208089.03999231,
+      "variance": 2577314.63226597
+    },
+    {
+      "Store": 35,
+      "Type": "B",
+      "historical_sales": 131520672.08,
+      "departments": 74,
+      "recent_actual": 11296052.92,
+      "forecast_revenue": 40625512.621348344,
+      "reference_plan": 37510768.31531539,
+      "variance": 3114744.3060329556
+    },
+    {
+      "Store": 36,
+      "Type": "A",
+      "historical_sales": 53412214.97,
+      "departments": 63,
+      "recent_actual": 3781066.53,
+      "forecast_revenue": 12490781.835023185,
+      "reference_plan": 15017907.324713847,
+      "variance": -2527125.4896906614
+    },
+    {
+      "Store": 37,
+      "Type": "C",
+      "historical_sales": 74202740.32,
+      "departments": 62,
+      "recent_actual": 6838971.37,
+      "forecast_revenue": 23268977.68462641,
+      "reference_plan": 20807841.78671026,
+      "variance": 2461135.897916153
+    },
+    {
+      "Store": 38,
+      "Type": "C",
+      "historical_sales": 55159626.42,
+      "departments": 63,
+      "recent_actual": 5611385.71,
+      "forecast_revenue": 20143821.435965493,
+      "reference_plan": 15257044.270669231,
+      "variance": 4886777.165296262
+    },
+    {
+      "Store": 39,
+      "Type": "A",
+      "historical_sales": 207445542.47,
+      "departments": 75,
+      "recent_actual": 20730480.74,
+      "forecast_revenue": 67224305.36899893,
+      "reference_plan": 58320395.98002769,
+      "variance": 8903909.38897124
+    },
+    {
+      "Store": 40,
+      "Type": "A",
+      "historical_sales": 137870309.79,
+      "departments": 77,
+      "recent_actual": 12678616.15,
+      "forecast_revenue": 41540331.32639991,
+      "reference_plan": 38739459.12531538,
+      "variance": 2800872.2010845244
+    },
+    {
+      "Store": 41,
+      "Type": "A",
+      "historical_sales": 181341934.89,
+      "departments": 77,
+      "recent_actual": 18065494.9,
+      "forecast_revenue": 59983737.91575983,
+      "reference_plan": 50725499.61816154,
+      "variance": 9258238.297598295
+    },
+    {
+      "Store": 42,
+      "Type": "C",
+      "historical_sales": 79565752.43,
+      "departments": 62,
+      "recent_actual": 7264993.06,
+      "forecast_revenue": 23498543.800846312,
+      "reference_plan": 22261160.469237365,
+      "variance": 1237383.3316089474
+    },
+    {
+      "Store": 43,
+      "Type": "C",
+      "historical_sales": 90565435.41,
+      "departments": 61,
+      "recent_actual": 8031825.35,
+      "forecast_revenue": 27199099.68839533,
+      "reference_plan": 25088954.430515386,
+      "variance": 2110145.2578799427
+    },
+    {
+      "Store": 44,
+      "Type": "C",
+      "historical_sales": 43293087.84,
+      "departments": 62,
+      "recent_actual": 4418656.08,
+      "forecast_revenue": 16343548.989818845,
+      "reference_plan": 11938605.050211748,
+      "variance": 4404943.939607097
+    },
+    {
+      "Store": 45,
+      "Type": "B",
+      "historical_sales": 112395341.42,
+      "departments": 74,
+      "recent_actual": 9485131.36,
+      "forecast_revenue": 35474603.38734995,
+      "reference_plan": 32434275.315476924,
+      "variance": 3040328.071873024
+    }
+  ],
+  "department_performance": [
+    {
+      "Dept": 1,
+      "historical_sales": 123638776.54,
+      "stores": 45,
+      "recent_actual": 10286444.77,
+      "forecast_revenue": 51905610.24328098,
+      "reference_plan": 35793235.3253,
+      "forecast_stores": 45,
+      "variance": 16112374.917980976
+    },
+    {
+      "Dept": 2,
+      "historical_sales": 280611174.43,
+      "stores": 45,
+      "recent_actual": 25823285.85,
+      "forecast_revenue": 80159772.2292182,
+      "reference_plan": 77747909.089,
+      "forecast_stores": 45,
+      "variance": 2411863.1402181983
+    },
+    {
+      "Dept": 3,
+      "historical_sales": 75892449.95,
+      "stores": 45,
+      "recent_actual": 11168350.32,
+      "forecast_revenue": 27625589.392201338,
+      "reference_plan": 16892875.0661,
+      "forecast_stores": 45,
+      "variance": 10732714.326101337
+    },
+    {
+      "Dept": 4,
+      "historical_sales": 167146745.58,
+      "stores": 45,
+      "recent_actual": 15556997.31,
+      "forecast_revenue": 48594204.73817936,
+      "reference_plan": 46390618.4309,
+      "forecast_stores": 45,
+      "variance": 2203586.3072793633
+    },
+    {
+      "Dept": 5,
+      "historical_sales": 135607358.57,
+      "stores": 45,
+      "recent_actual": 9881323.13,
+      "forecast_revenue": 43324834.749129556,
+      "reference_plan": 42740661.3959,
+      "forecast_stores": 45,
+      "variance": 584173.3532295525
+    },
+    {
+      "Dept": 6,
+      "historical_sales": 28420667.14,
+      "stores": 45,
+      "recent_actual": 1708983.8,
+      "forecast_revenue": 10561717.059306754,
+      "reference_plan": 8835001.310453847,
+      "forecast_stores": 44,
+      "variance": 1726715.7488529067
+    },
+    {
+      "Dept": 7,
+      "historical_sales": 155477562.75,
+      "stores": 45,
+      "recent_actual": 10902423.38,
+      "forecast_revenue": 57363678.99067844,
+      "reference_plan": 50627364.488,
+      "forecast_stores": 45,
+      "variance": 6736314.502678439
+    },
+    {
+      "Dept": 8,
+      "historical_sales": 194280780.73,
+      "stores": 45,
+      "recent_actual": 17994241.12,
+      "forecast_revenue": 57425601.49299288,
+      "reference_plan": 54307251.8692,
+      "forecast_stores": 45,
+      "variance": 3118349.6237928793
+    },
+    {
+      "Dept": 9,
+      "historical_sales": 128393256.65,
+      "stores": 45,
+      "recent_actual": 12756266.67,
+      "forecast_revenue": 42842437.307172924,
+      "reference_plan": 34376197.02455385,
+      "forecast_stores": 45,
+      "variance": 8466240.282619074
+    },
+    {
+      "Dept": 10,
+      "historical_sales": 117897387.58,
+      "stores": 45,
+      "recent_actual": 10842925.76,
+      "forecast_revenue": 33873159.829574384,
+      "reference_plan": 32698217.1562,
+      "forecast_stores": 45,
+      "variance": 1174942.6733743846
+    },
+    {
+      "Dept": 11,
+      "historical_sales": 93329276.38,
+      "stores": 45,
+      "recent_actual": 7366810.34,
+      "forecast_revenue": 26391125.590291094,
+      "reference_plan": 27309693.0236,
+      "forecast_stores": 45,
+      "variance": -918567.4333089069
+    },
+    {
+      "Dept": 12,
+      "historical_sales": 26760119.51,
+      "stores": 45,
+      "recent_actual": 2486492.17,
+      "forecast_revenue": 6596349.598620728,
+      "reference_plan": 7125046.8051,
+      "forecast_stores": 45,
+      "variance": -528697.2064792728
+    },
+    {
+      "Dept": 13,
+      "historical_sales": 197321569.95,
+      "stores": 45,
+      "recent_actual": 18662332.45,
+      "forecast_revenue": 56929450.27231743,
+      "reference_plan": 53864738.919700004,
+      "forecast_stores": 45,
+      "variance": 3064711.3526174277
+    },
+    {
+      "Dept": 14,
+      "historical_sales": 95694666.45,
+      "stores": 45,
+      "recent_actual": 7949552.03,
+      "forecast_revenue": 31933021.958296474,
+      "reference_plan": 28566852.3022,
+      "forecast_stores": 45,
+      "variance": 3366169.6560964733
+    },
+    {
+      "Dept": 16,
+      "historical_sales": 91670682.27,
+      "stores": 45,
+      "recent_actual": 4968200.9799999995,
+      "forecast_revenue": 23810626.97621966,
+      "reference_plan": 26677486.1572,
+      "forecast_stores": 45,
+      "variance": -2866859.1809803396
+    },
+    {
+      "Dept": 17,
+      "historical_sales": 65319816.63,
+      "stores": 45,
+      "recent_actual": 5773801.44,
+      "forecast_revenue": 19384388.28998732,
+      "reference_plan": 18578843.3868,
+      "forecast_stores": 45,
+      "variance": 805544.9031873196
+    },
+    {
+      "Dept": 18,
+      "historical_sales": 36897489.06,
+      "stores": 45,
+      "recent_actual": 2599952.28,
+      "forecast_revenue": 18544910.941026714,
+      "reference_plan": 13711165.342600001,
+      "forecast_stores": 45,
+      "variance": 4833745.598426713
+    },
+    {
+      "Dept": 19,
+      "historical_sales": 6816183.11,
+      "stores": 38,
+      "recent_actual": 607931.4,
+      "forecast_revenue": 2375103.5953754177,
+      "reference_plan": 1958388.8323076924,
+      "forecast_stores": 37,
+      "variance": 416714.7630677253
+    },
+    {
+      "Dept": 20,
+      "historical_sales": 33349645.11,
+      "stores": 45,
+      "recent_actual": 2933839.37,
+      "forecast_revenue": 7874314.91973586,
+      "reference_plan": 9280377.089246154,
+      "forecast_stores": 45,
+      "variance": -1406062.1695102938
+    },
+    {
+      "Dept": 21,
+      "historical_sales": 32064645.08,
+      "stores": 45,
+      "recent_actual": 2615980.72,
+      "forecast_revenue": 7942049.441799449,
+      "reference_plan": 9176550.4365,
+      "forecast_stores": 45,
+      "variance": -1234500.994700551
+    },
+    {
+      "Dept": 22,
+      "historical_sales": 59723107.36,
+      "stores": 45,
+      "recent_actual": 5480743.19,
+      "forecast_revenue": 18520291.96475568,
+      "reference_plan": 17009926.424813285,
+      "forecast_stores": 45,
+      "variance": 1510365.539942395
+    },
+    {
+      "Dept": 23,
+      "historical_sales": 138180330.78,
+      "stores": 45,
+      "recent_actual": 12025963.61,
+      "forecast_revenue": 42424024.65120149,
+      "reference_plan": 40025310.08081538,
+      "forecast_stores": 45,
+      "variance": 2398714.5703861043
+    },
+    {
+      "Dept": 24,
+      "historical_sales": 34347586.26,
+      "stores": 45,
+      "recent_actual": 3621443.21,
+      "forecast_revenue": 12365438.38741749,
+      "reference_plan": 9315542.696946539,
+      "forecast_stores": 43,
+      "variance": 3049895.6904709507
+    },
+    {
+      "Dept": 25,
+      "historical_sales": 57111218.62,
+      "stores": 45,
+      "recent_actual": 4911248.11,
+      "forecast_revenue": 16730547.212548578,
+      "reference_plan": 16137660.5245,
+      "forecast_stores": 45,
+      "variance": 592886.6880485788
+    },
+    {
+      "Dept": 26,
+      "historical_sales": 43900009.6,
+      "stores": 45,
+      "recent_actual": 4002372.61,
+      "forecast_revenue": 13866283.692195596,
+      "reference_plan": 12356509.159121979,
+      "forecast_stores": 45,
+      "variance": 1509774.5330736171
+    },
+    {
+      "Dept": 27,
+      "historical_sales": 8897336.59,
+      "stores": 44,
+      "recent_actual": 795022.8099999999,
+      "forecast_revenue": 3695350.8390545202,
+      "reference_plan": 2666575.7395846155,
+      "forecast_stores": 42,
+      "variance": 1028775.0994699048
+    },
+    {
+      "Dept": 28,
+      "historical_sales": 3785153.25,
+      "stores": 43,
+      "recent_actual": 284249.74,
+      "forecast_revenue": 2060917.074899572,
+      "reference_plan": 1130753.3884,
+      "forecast_stores": 43,
+      "variance": 930163.6864995719
+    },
+    {
+      "Dept": 29,
+      "historical_sales": 30009602.42,
+      "stores": 40,
+      "recent_actual": 2565818.26,
+      "forecast_revenue": 9784082.325295264,
+      "reference_plan": 8864682.8695,
+      "forecast_stores": 40,
+      "variance": 919399.4557952639
+    },
+    {
+      "Dept": 30,
+      "historical_sales": 21789381.43,
+      "stores": 37,
+      "recent_actual": 1749951.58,
+      "forecast_revenue": 4908967.384350647,
+      "reference_plan": 6067390.525,
+      "forecast_stores": 39,
+      "variance": -1158423.1406493532
+    },
+    {
+      "Dept": 31,
+      "historical_sales": 14193384.22,
+      "stores": 45,
+      "recent_actual": 1591512.77,
+      "forecast_revenue": 4485625.521394351,
+      "reference_plan": 3658126.1188846156,
+      "forecast_stores": 45,
+      "variance": 827499.402509735
+    },
+    {
+      "Dept": 32,
+      "historical_sales": 40698960.81,
+      "stores": 45,
+      "recent_actual": 2944633.68,
+      "forecast_revenue": 14284903.700145723,
+      "reference_plan": 12365049.492238462,
+      "forecast_stores": 45,
+      "variance": 1919854.2079072613
+    },
+    {
+      "Dept": 33,
+      "historical_sales": 34883969.93,
+      "stores": 45,
+      "recent_actual": 3521281.66,
+      "forecast_revenue": 11867899.847680844,
+      "reference_plan": 9612340.648733333,
+      "forecast_stores": 44,
+      "variance": 2255559.1989475116
+    },
+    {
+      "Dept": 34,
+      "historical_sales": 83223625.43,
+      "stores": 43,
+      "recent_actual": 7029198.6,
+      "forecast_revenue": 22699665.114541836,
+      "reference_plan": 23603514.01922308,
+      "forecast_stores": 38,
+      "variance": -903848.904681243
+    },
+    {
+      "Dept": 35,
+      "historical_sales": 15472775.08,
+      "stores": 39,
+      "recent_actual": 1142686.91,
+      "forecast_revenue": 3521671.63752805,
+      "reference_plan": 4445323.4278,
+      "forecast_stores": 37,
+      "variance": -923651.7902719495
+    },
+    {
+      "Dept": 36,
+      "historical_sales": 10709513.77,
+      "stores": 39,
+      "recent_actual": 454549.79,
+      "forecast_revenue": 2543136.1873263037,
+      "reference_plan": 3446395.8594,
+      "forecast_stores": 37,
+      "variance": -903259.6720736963
+    },
+    {
+      "Dept": 37,
+      "historical_sales": 8017243.35,
+      "stores": 20,
+      "recent_actual": 702051.13,
+      "forecast_revenue": 2172014.456047365,
+      "reference_plan": 2247483.6145,
+      "forecast_stores": 19,
+      "variance": -75469.1584526352
+    },
+    {
+      "Dept": 38,
+      "historical_sales": 393118136.92,
+      "stores": 45,
+      "recent_actual": 34827195.27,
+      "forecast_revenue": 108242501.31071922,
+      "reference_plan": 110275683.1946,
+      "forecast_stores": 45,
+      "variance": -2033181.8838807791
+    },
+    {
+      "Dept": 39,
+      "historical_sales": 177.98,
+      "stores": 5,
+      "recent_actual": 137.08,
+      "forecast_revenue": 60378.4747935497,
+      "reference_plan": 23900.2966,
+      "forecast_stores": 4,
+      "variance": 36478.1781935497
+    },
+    {
+      "Dept": 40,
+      "historical_sales": 288936022.05,
+      "stores": 45,
+      "recent_actual": 26783406.39,
+      "forecast_revenue": 82841527.02168435,
+      "reference_plan": 80788725.524,
+      "forecast_stores": 45,
+      "variance": 2052801.4976843446
+    },
+    {
+      "Dept": 41,
+      "historical_sales": 10600265.07,
+      "stores": 42,
+      "recent_actual": 1275787.78,
+      "forecast_revenue": 4126617.4607423176,
+      "reference_plan": 2688554.7702,
+      "forecast_stores": 38,
+      "variance": 1438062.6905423175
+    },
+    {
+      "Dept": 42,
+      "historical_sales": 33219291.57,
+      "stores": 45,
+      "recent_actual": 3141035.81,
+      "forecast_revenue": 8347936.620411981,
+      "reference_plan": 9064814.1132,
+      "forecast_stores": 45,
+      "variance": -716877.4927880187
+    },
+    {
+      "Dept": 43,
+      "historical_sales": 14.32,
+      "stores": 5,
+      "recent_actual": null,
+      "forecast_revenue": 307.7205752564,
+      "reference_plan": 15528.7962,
+      "forecast_stores": 3,
+      "variance": -15221.0756247436
+    },
+    {
+      "Dept": 44,
+      "historical_sales": 25449612.96,
+      "stores": 45,
+      "recent_actual": 2410037.2,
+      "forecast_revenue": 8017676.573741157,
+      "reference_plan": 7221921.312083077,
+      "forecast_stores": 44,
+      "variance": 795755.2616580799
+    },
+    {
+      "Dept": 45,
+      "historical_sales": 44937.63,
+      "stores": 37,
+      "recent_actual": 1733.22,
+      "forecast_revenue": 17236.0812790761,
+      "reference_plan": 2979.8385923077,
+      "forecast_stores": 25,
+      "variance": 14256.2426867684
+    },
+    {
+      "Dept": 46,
+      "historical_sales": 128344411.44,
+      "stores": 45,
+      "recent_actual": 10845358.72,
+      "forecast_revenue": 36449574.683338664,
+      "reference_plan": 37020980.4831,
+      "forecast_stores": 45,
+      "variance": -571405.7997613326
+    },
+    {
+      "Dept": 47,
+      "historical_sales": -4962.93,
+      "stores": 37,
+      "recent_actual": -308.68,
+      "forecast_revenue": 13117.1590526946,
+      "reference_plan": 4757.5099575225,
+      "forecast_stores": 36,
+      "variance": 8359.6490951721
+    },
+    {
+      "Dept": 48,
+      "historical_sales": 2342804.61,
+      "stores": 25,
+      "recent_actual": 427962.12,
+      "forecast_revenue": 1510414.9222019971,
+      "reference_plan": 725147.4786538462,
+      "forecast_stores": 18,
+      "variance": 785267.443548151
+    },
+    {
+      "Dept": 49,
+      "historical_sales": 36572901.71,
+      "stores": 45,
+      "recent_actual": 3383310.71,
+      "forecast_revenue": 10024677.06595546,
+      "reference_plan": 10110212.884738462,
+      "forecast_stores": 45,
+      "variance": -85535.818783002
+    },
+    {
+      "Dept": 50,
+      "historical_sales": 4153197.13,
+      "stores": 14,
+      "recent_actual": 387729.21,
+      "forecast_revenue": 1269329.9728051687,
+      "reference_plan": 1140138.0429,
+      "forecast_stores": 11,
+      "variance": 129191.9299051687
+    },
+    {
+      "Dept": 51,
+      "historical_sales": 30572.83,
+      "stores": 37,
+      "recent_actual": -114.74,
+      "forecast_revenue": 1089.5687880103,
+      "reference_plan": 87.2029384615,
+      "forecast_stores": 2,
+      "variance": 1002.3658495487
+    },
+    {
+      "Dept": 52,
+      "historical_sales": 12086936.99,
+      "stores": 45,
+      "recent_actual": 975240.57,
+      "forecast_revenue": 3632876.246106937,
+      "reference_plan": 3418043.261623077,
+      "forecast_stores": 45,
+      "variance": 214832.98448386
+    },
+    {
+      "Dept": 54,
+      "historical_sales": 516294.63,
+      "stores": 37,
+      "recent_actual": 12460.41,
+      "forecast_revenue": 789821.9622280262,
+      "reference_plan": 122211.9371076923,
+      "forecast_stores": 37,
+      "variance": 667610.0251203339
+    },
+    {
+      "Dept": 55,
+      "historical_sales": 59970455.35,
+      "stores": 45,
+      "recent_actual": 3540203.21,
+      "forecast_revenue": 19930820.027505223,
+      "reference_plan": 19652960.891,
+      "forecast_stores": 44,
+      "variance": 277859.1365052238
+    },
+    {
+      "Dept": 56,
+      "historical_sales": 22511522.87,
+      "stores": 45,
+      "recent_actual": 749062.31,
+      "forecast_revenue": 4846809.253046656,
+      "reference_plan": 7098774.107369231,
+      "forecast_stores": 45,
+      "variance": -2251964.854322575
+    },
+    {
+      "Dept": 58,
+      "historical_sales": 16255763.57,
+      "stores": 34,
+      "recent_actual": 1812300.55,
+      "forecast_revenue": 6053281.386212222,
+      "reference_plan": 4378389.959546154,
+      "forecast_stores": 33,
+      "variance": 1674891.426666068
+    },
+    {
+      "Dept": 59,
+      "historical_sales": 4240394.52,
+      "stores": 45,
+      "recent_actual": 104914.56,
+      "forecast_revenue": 3492149.4293072335,
+      "reference_plan": 1665117.921,
+      "forecast_stores": 45,
+      "variance": 1827031.5083072335
+    },
+    {
+      "Dept": 60,
+      "historical_sales": 2005020.96,
+      "stores": 45,
+      "recent_actual": 181769.81,
+      "forecast_revenue": 1206413.4349556607,
+      "reference_plan": 623218.7046,
+      "forecast_stores": 45,
+      "variance": 583194.7303556607
+    },
+    {
+      "Dept": 65,
+      "historical_sales": 6498163.99,
+      "stores": 1,
+      "recent_actual": 653786.5,
+      "forecast_revenue": 1777234.7439791055,
+      "reference_plan": 1775939.8993,
+      "forecast_stores": 1,
+      "variance": 1294.8446791056
+    },
+    {
+      "Dept": 67,
+      "historical_sales": 47880777.68,
+      "stores": 45,
+      "recent_actual": 3575071.28,
+      "forecast_revenue": 19043905.000646472,
+      "reference_plan": 14240768.8943,
+      "forecast_stores": 45,
+      "variance": 4803136.106346471
+    },
+    {
+      "Dept": 71,
+      "historical_sales": 30383022.89,
+      "stores": 43,
+      "recent_actual": 2623142.48,
+      "forecast_revenue": 8220522.218409932,
+      "reference_plan": 8558398.4085,
+      "forecast_stores": 40,
+      "variance": -337876.1900900686
+    },
+    {
+      "Dept": 72,
+      "historical_sales": 305725152.21,
+      "stores": 45,
+      "recent_actual": 24381892.78,
+      "forecast_revenue": 107336577.45771621,
+      "reference_plan": 93098645.2983,
+      "forecast_stores": 45,
+      "variance": 14237932.159416214
+    },
+    {
+      "Dept": 74,
+      "historical_sales": 88781985.57,
+      "stores": 45,
+      "recent_actual": 8194315.75,
+      "forecast_revenue": 26092210.911277227,
+      "reference_plan": 24458759.7206,
+      "forecast_stores": 45,
+      "variance": 1633451.1906772256
+    },
+    {
+      "Dept": 77,
+      "historical_sales": 49344.27,
+      "stores": 37,
+      "recent_actual": -68.55,
+      "forecast_revenue": 1191.2148516041,
+      "reference_plan": 1745.6669866667,
+      "forecast_stores": 3,
+      "variance": -554.4521350626
+    },
+    {
+      "Dept": 78,
+      "historical_sales": 1714.71,
+      "stores": 37,
+      "recent_actual": 3.0,
+      "forecast_revenue": 321.5550462325,
+      "reference_plan": 22.8352095238,
+      "forecast_stores": 3,
+      "variance": 298.7198367087
+    },
+    {
+      "Dept": 79,
+      "historical_sales": 141396544.14,
+      "stores": 45,
+      "recent_actual": 12592717.22,
+      "forecast_revenue": 39925205.70884888,
+      "reference_plan": 39483617.903,
+      "forecast_stores": 45,
+      "variance": 441587.8058488816
+    },
+    {
+      "Dept": 80,
+      "historical_sales": 71774060.2,
+      "stores": 45,
+      "recent_actual": 6515396.88,
+      "forecast_revenue": 19154874.901561115,
+      "reference_plan": 19966654.4025,
+      "forecast_stores": 45,
+      "variance": -811779.5009388849
+    },
+    {
+      "Dept": 81,
+      "historical_sales": 99552029.31,
+      "stores": 45,
+      "recent_actual": 9103100.46,
+      "forecast_revenue": 28270943.367667027,
+      "reference_plan": 27592168.9251,
+      "forecast_stores": 45,
+      "variance": 678774.4425670281
+    },
+    {
+      "Dept": 82,
+      "historical_sales": 99547080.33,
+      "stores": 45,
+      "recent_actual": 9004471.14,
+      "forecast_revenue": 33204805.954997115,
+      "reference_plan": 29302837.4247,
+      "forecast_stores": 45,
+      "variance": 3901968.5302971154
+    },
+    {
+      "Dept": 83,
+      "historical_sales": 19988830.84,
+      "stores": 43,
+      "recent_actual": 1707751.87,
+      "forecast_revenue": 4697866.741689903,
+      "reference_plan": 5703429.2562,
+      "forecast_stores": 42,
+      "variance": -1005562.514510097
+    },
+    {
+      "Dept": 85,
+      "historical_sales": 13710696.21,
+      "stores": 44,
+      "recent_actual": 1066615.68,
+      "forecast_revenue": 4182663.562955292,
+      "reference_plan": 3977177.254792308,
+      "forecast_stores": 43,
+      "variance": 205486.308162984
+    },
+    {
+      "Dept": 87,
+      "historical_sales": 85760075.61,
+      "stores": 45,
+      "recent_actual": 9240958.21,
+      "forecast_revenue": 29451339.25783361,
+      "reference_plan": 23560164.0731,
+      "forecast_stores": 45,
+      "variance": 5891175.184733611
+    },
+    {
+      "Dept": 90,
+      "historical_sales": 291068463.68,
+      "stores": 45,
+      "recent_actual": 27240419.34,
+      "forecast_revenue": 90100767.38149053,
+      "reference_plan": 81370776.3146,
+      "forecast_stores": 45,
+      "variance": 8729991.066890523
+    },
+    {
+      "Dept": 91,
+      "historical_sales": 216781705.73,
+      "stores": 45,
+      "recent_actual": 19746458.99,
+      "forecast_revenue": 60181751.219001085,
+      "reference_plan": 60372504.413,
+      "forecast_stores": 45,
+      "variance": -190753.1939989179
+    },
+    {
+      "Dept": 92,
+      "historical_sales": 483943341.87,
+      "stores": 45,
+      "recent_actual": 46451052.5,
+      "forecast_revenue": 153566374.27032652,
+      "reference_plan": 135817228.58,
+      "forecast_stores": 45,
+      "variance": 17749145.69032651
+    },
+    {
+      "Dept": 93,
+      "historical_sales": 159698663.19,
+      "stores": 43,
+      "recent_actual": 15063259.96,
+      "forecast_revenue": 48778881.53960061,
+      "reference_plan": 44706209.8551,
+      "forecast_stores": 42,
+      "variance": 4072671.6845006123
+    },
+    {
+      "Dept": 94,
+      "historical_sales": 189912450.33,
+      "stores": 45,
+      "recent_actual": 17193287.62,
+      "forecast_revenue": 57026379.98121223,
+      "reference_plan": 52614584.480900005,
+      "forecast_stores": 45,
+      "variance": 4411795.500312224
+    },
+    {
+      "Dept": 95,
+      "historical_sales": 449320162.52,
+      "stores": 45,
+      "recent_actual": 41809101.13,
+      "forecast_revenue": 127128197.95973837,
+      "reference_plan": 123245684.9546,
+      "forecast_stores": 45,
+      "variance": 3882513.0051383674
+    },
+    {
+      "Dept": 96,
+      "historical_sales": 73833916.16,
+      "stores": 45,
+      "recent_actual": 7201224.44,
+      "forecast_revenue": 22463513.15060187,
+      "reference_plan": 20634444.81610154,
+      "forecast_stores": 41,
+      "variance": 1829068.3345003314
+    },
+    {
+      "Dept": 97,
+      "historical_sales": 89496511.9,
+      "stores": 45,
+      "recent_actual": 8457655.64,
+      "forecast_revenue": 24270763.93855895,
+      "reference_plan": 24584954.107,
+      "forecast_stores": 44,
+      "variance": -314190.1684410498
+    },
+    {
+      "Dept": 98,
+      "historical_sales": 39828919.37,
+      "stores": 45,
+      "recent_actual": 3447808.22,
+      "forecast_revenue": 11570507.705800153,
+      "reference_plan": 11357249.070161538,
+      "forecast_stores": 45,
+      "variance": 213258.6356386151
+    },
+    {
+      "Dept": 99,
+      "historical_sales": 358149.85,
+      "stores": 37,
+      "recent_actual": 20483.57,
+      "forecast_revenue": 408685.9081896849,
+      "reference_plan": 428619.7971323077,
+      "forecast_stores": 37,
+      "variance": -19933.8889426229
+    }
+  ],
+  "holiday_effect": {
+    "holiday_average_weekly_sales": 17035.823187350394,
+    "nonholiday_average_weekly_sales": 15901.445069008367,
+    "holiday_lift_pct": 0.07133805219708678
+  },
+  "scenario_presets": {
+    "Base case": {
+      "description": "Model baseline with measured planning assumptions.",
+      "demand_growth_pct": 0.0,
+      "price_mix_pct": 0.0,
+      "contribution_margin_pct": 26.0,
+      "operating_expense_pct": 12.0
+    },
+    "Upside": {
+      "description": "Stronger demand and improved price / mix realisation.",
+      "demand_growth_pct": 4.0,
+      "price_mix_pct": 1.0,
+      "contribution_margin_pct": 27.5,
+      "operating_expense_pct": 11.5
+    },
+    "Conservative": {
+      "description": "Softer demand and higher operating cost pressure.",
+      "demand_growth_pct": -3.0,
+      "price_mix_pct": -0.5,
+      "contribution_margin_pct": 24.0,
+      "operating_expense_pct": 13.0
+    }
+  },
+  "methodology": {
+    "model": "HistGradientBoostingRegressor with store/department/store-type categoricals, calendar, holiday, markdown, regional and lagged sales features.",
+    "backtesting": "Last 13 (or available minimum) weeks held out; recursive predictions use only prior actuals/predictions. Holiday rows receive 5x weight for weighted MAE.",
+    "reference_plan": "Illustrative reference plan: same ISO week historical average by store/department, with a 2% planning uplift. It is not an approved company budget."
+  }
+}
